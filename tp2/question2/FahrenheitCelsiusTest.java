@@ -4,8 +4,8 @@ package question2;
 /**
  * Classe-test FahrenheitCelsiusTest.
  *
- * @author  (votre nom)
- * @version (un numéro de version ou une date)
+ * @author  (Mohamed SABRA)
+ * @version (1)
  *
  * Les classes-test sont documentées ici :
  * http://junit.sourceforge.net/javadoc/junit/framework/TestCase.html
@@ -32,7 +32,9 @@ public class FahrenheitCelsiusTest extends junit.framework.TestCase
     // à l'aide du menu contextuel "Présentoir --> Engagements".
     // Notez cependant que ce dernier ne peut saisir les objets primitifs
     // du présentoir (les objets sans constructeur, comme int, float, etc.).
-
+       
+     private question2.FahrenheitCelsius application1;
+     
     /**
      * Constructeur de la classe-test FahrenheitCelsiusTest
      */
@@ -48,7 +50,7 @@ public class FahrenheitCelsiusTest extends junit.framework.TestCase
     protected void setUp() // throws java.lang.Exception
     {
         // Initialisez ici vos engagements
-
+        application1 = new FahrenheitCelsius();
     }
 
     /**
@@ -59,6 +61,8 @@ public class FahrenheitCelsiusTest extends junit.framework.TestCase
     protected void tearDown() // throws java.lang.Exception
     {
         //Libérez ici les ressources engagées par setUp()
+        application1 = null;
+	assertNull(application1);
     }
 
     /**
@@ -68,5 +72,28 @@ public class FahrenheitCelsiusTest extends junit.framework.TestCase
      * Par convention, leurs noms devraient débuter par "test".
      * Vous pouvez ébaucher le corps grâce au menu contextuel "Enregistrer une méthode de test".
      */
+    
+    public void test_fahrenheitEnCelsius() {
+	    
+	    /*
+	     * 
+	     * assertEquals(java.lang.String message, double expected, double actual, double delta)
+                Asserts that two doubles or floats are equal to within a positive delta.
+	     * 
+	     * 
+	     */
+	    
+		assertEquals("    0 °F -> -17.7 °C ? ",   -17.7,  application1.fahrenheitEnCelsius(0),        0.1);
+		assertEquals("  100 °F -> 37.7 °C ? ",    37.7,   application1.fahrenheitEnCelsius(100),      0.1);
+		assertEquals(" 2000 °F -> 1093.3 °C ?",   1093.3, application1.fahrenheitEnCelsius(2000),     0.1);
+		assertEquals("   54 °F -> 12.2 °C ?",     12.2,   application1.fahrenheitEnCelsius(54),       0.1);
+		
+	}
+	
+	//a different way..
+	public void test_fahrenheit() {
+	assertTrue(question1.FahrenheitCelsius.fahrenheitEnCelsius(32)==0f);
+	assertTrue(question1.FahrenheitCelsius.fahrenheitEnCelsius(100)==37.7f);
+}
 
 }
